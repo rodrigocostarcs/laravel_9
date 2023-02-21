@@ -21,11 +21,36 @@ class UserController extends Controller
         #$user = User::find($id);
         
         $user = User::where('id','=',$id)->first();
-        
+
         if(!$user){
             return redirect()->route('users.index');
         }else{
             return view('users.show',compact('user'));
         }
+    }
+
+    public function create()
+    {
+        return view('users.create');
+    }
+
+    public function store(Request $request)
+    {   
+        #$request->all()
+        #$request->only(['name', 'email','password'])
+        
+    //    $user = new User;
+    //    $user->name = $request->name;
+    //    $user->email = $request->email;
+    //    $user->senha = bcrypt($request->password);
+    //    $user->save();
+
+        $data = $request->all();
+        $data['password'] = bcrypt($request->password);
+
+        $user = User::create($data);
+        #return redirect()->route('users.show',['id' => $user->id]);
+        return redirect()->route('users.index');
+
     }
 }

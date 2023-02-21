@@ -3,7 +3,9 @@
 @section('title','listagem de usuários')
     
 @section('content') <!--Para essa seção definida no layouts.app vou por este conteúdo.--> 
-<h1>Listagem dos Usuários</h1>
+<h3>
+    Listagem dos Usuários | <a href="{{route('users.create')}}">+</a>
+</h3>
 
 <ul>
     @foreach($users as $user)
