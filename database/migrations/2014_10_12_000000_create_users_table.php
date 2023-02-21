@@ -13,6 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
+        #php artisan migrate - Para criar as migrates. 
+        #php artisan migrate:fresh - Deleta tudo e cria de novo.
+        #php artisan migrate:referesh - Faz o método down primeiro e depois cria.
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
