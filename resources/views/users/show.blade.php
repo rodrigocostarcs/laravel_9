@@ -11,4 +11,11 @@
     {{$user->email}}
 </li>
 </ul>
+
+<form action="{{route('users.delete',['id'=>$user->id])}}" method="POST">
+    @csrf
+    @method('DELETE')
+    <button type="submit">Deletar</button>
+</form>
+
 @endsection

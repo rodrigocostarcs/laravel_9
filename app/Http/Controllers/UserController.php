@@ -74,8 +74,6 @@ class UserController extends Controller
         if($request->password)
             $data['password'] = bcrypt(($request->password));
 
-        
-
         if($user){
            $user->update($data);
            return redirect()->route('users.index');
@@ -83,4 +81,17 @@ class UserController extends Controller
             return redirect()->route('users.index');
         }
     }
+
+    public function delete($id)
+    {
+         $user = User::find($id);
+       
+         if($user){
+            $user->delete();
+            return redirect()->route('users.index');
+         }else{
+             return redirect()->route('users.index');
+         }
+     }
+
 }
