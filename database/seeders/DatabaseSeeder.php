@@ -14,11 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        #chamando o seeder que criei. Para rodar este seed basta executar o comando. php artisan db:seed
+        $this->call([
+            UsersSeeder::class,
+        ]);
     }
 }
