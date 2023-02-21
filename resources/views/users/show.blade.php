@@ -1,3 +1,6 @@
+@extends('layouts.app')
+@section('title','listagem do usuário')
+@section('content')
 <h1>Detalhes do usuário {{$user->name}}</h1>
 
 <ul>
@@ -8,3 +11,4 @@
     {{$user->email}}
 </li>
 </ul>
+@endsection
