@@ -26,12 +26,16 @@ class StoreUpdateUserFormRequest extends FormRequest
 
     public function rules()
     {
-        return [
+
+
+        $id = $this->id ?? ''; #pega o valor do parÂmetro id.
+
+        $rules = [
             'name' => 'required|string|max:255|min:3',
             'email' => [
                 'required',
                 'email',
-                'unique:users',
+                "unique:users,email,{$id},id", #adiciona a exceção para o e-mail uico na tabela users, no campo e-mail, onde o if for igual ao id passado.
             ],
             'password' => [
                 #nullable - caso preencher tem que seguir as validações abaixo.
@@ -40,5 +44,15 @@ class StoreUpdateUserFormRequest extends FormRequest
                 'max:20'
             ]
         ];
+
+        if($this->method('PUT')){
+            $rules['password'] = [
+                'nullable',
+                'min:6',
+                'max:20'
+            ];
+        }
+
+        return $rules;
     }
 }
