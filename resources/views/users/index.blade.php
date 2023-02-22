@@ -7,6 +7,11 @@
     Listagem dos Usuários | <a href="{{route('users.create')}}">+</a>
 </h3>
 
+<form action="{{route('users.index')}}" method="GET">
+    <input type="text" name="search" placeholder="Pesquisar">
+    <button>Pesquisar</button>
+</form>
+
 <ul>
     @foreach($users as $user)
         <li>
