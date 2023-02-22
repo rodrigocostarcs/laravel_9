@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('title', 'criar um novo usuário')
 @section('content')
-    <h1>Cadastrar novo usuário</h1>
+    <h1 class="text-2xl font-semibold leading-tigh py-2">Novo Usuário</h1>
 
     @include('includes.validations-form')
-    
+
     <form action="{{ route('users.store') }}" method="post">
         {{-- @csrf()
     <input type="text" name="name" placeholder="Nome:" value="{{old('name')}}">

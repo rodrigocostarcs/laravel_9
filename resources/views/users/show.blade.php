@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','listagem do usuário')
 @section('content')
-<h1>Detalhes do usuário {{$user->name}}</h1>
+<h1 class="text-2xl font-semibold leading-tigh py-2">Listagem do usuário {{ $user->name }}</h1>
 
 <ul>
 <li>
@@ -12,10 +12,10 @@
 </li>
 </ul>
 
-<form action="{{route('users.delete',['id'=>$user->id])}}" method="POST">
+<form action="{{route('users.delete',['id'=>$user->id])}}" method="POST" class="py-12">
     @csrf
     @method('DELETE')
-    <button type="submit">Deletar</button>
+    <button type="submit" class="rounded-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4">Deletar</button>
 </form>
 
 @endsection
