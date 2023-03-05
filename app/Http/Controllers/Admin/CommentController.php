@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateCommentRequest;
 use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class CommentController extends Controller
         $this->user = $user;
     }
 
-    public function index($userId)
+    public function index(Request $request, $userId)
     {
 
 
@@ -26,7 +27,9 @@ class CommentController extends Controller
             return redirect()->back();
         }
 
-        $comments =  $user->comments()->get();
+        $comments =  $user->comments()
+                            ->where('body','LIKE',"%{$request->search}%")
+                            ->get();
 
         return view('users.comments.index', compact('user', 'comments'));
     }
@@ -44,7 +47,7 @@ class CommentController extends Controller
         return view('users.comments.create', compact('user'));
     }
 
-    public function store(Request $request, $userId)
+    public function store(StoreUpdateCommentRequest $request, $userId)
     {
 
 
@@ -75,7 +78,7 @@ class CommentController extends Controller
         return view('users.comments.edit', compact('user','comment'));
     }
 
-    public function update(Request $request, $id)
+    public function update(StoreUpdateCommentRequest $request, $id)
     {
 
 
