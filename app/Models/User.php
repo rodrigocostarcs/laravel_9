@@ -14,13 +14,14 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
-     *
+     * RODAR O COMANDO php artisan storage:link para criar um link simbólico na pasta public para trabalhar com imagens, essa pasta está dentro de storage/app/public
      * @var array<int, string>
      */
     protected $fillable = [
         'name',
         'email',
         'password',
+        'image',
     ];
 
     /**

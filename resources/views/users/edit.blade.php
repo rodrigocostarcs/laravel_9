@@ -7,7 +7,7 @@
 
     @include('includes.validations-form')
 
-    <form action="{{ route('users.update', ['id' => $user->id]) }}" method="post">
+    <form action="{{ route('users.update', ['id' => $user->id]) }}" method="post"  enctype="multipart/form-data">
         <input type="hidden" name="_method" value="PUT">
         <!--Para indicar que é do tipo PUT. USA ESTE OU A DIRETIVA ABAIXO-->
         <!--@method('PUT')-->
